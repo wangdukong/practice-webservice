@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor// 파라미터가 없는 기본생성자를 만들어줌.
 @Entity //테이블과 링크될 클래스임을 나타냄.클래스의 카멜케이스 이름을 언더스코어 네이밍(_)으로 테이블 이름을 매칭
-public class Posts {
+public class Posts extends BaseTimeEntity{
     @Id // 해당 테이블의 PK필드를 나타냄
     // PK->Primary Key 각 테이블에서 유일한 값.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
