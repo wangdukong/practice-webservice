@@ -31,5 +31,6 @@ dependencies {
     implementation('com.h2database:h2')// 인메모리형 관계형 데이터베이스.
     testImplementation('com.h2database:h2')
     implementation('org.springframework.boot:spring-boot-starter-mustache')
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
 }
 
