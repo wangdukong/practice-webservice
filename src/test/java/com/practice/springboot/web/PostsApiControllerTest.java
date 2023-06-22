@@ -93,4 +93,16 @@ public class PostsApiControllerTest {
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
 
     }
+    @Test
+    public void posts_삭제된다() throws Exception{
+        Posts savedPost= postsRepository.save(Posts.builder()
+                .author("oks")
+                .title("hello")
+                .content("hello")
+                .build());
+        Long deletedId= savedPost.getId();
+        String url="http://localhost:"+port+"/api/v1/posts/"+deletedId;
+        restTemplate.delete(url);
+        assertThat(postsRepository.existsById(deletedId)).isFalse();
+    }
 }
