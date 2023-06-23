@@ -1,5 +1,6 @@
 package com.practice.springboot.web;
 
+import com.practice.springboot.config.auth.LoginUser;
 import com.practice.springboot.config.auth.dto.SessionUser;
 import com.practice.springboot.service.posts.PostsService;
 import com.practice.springboot.web.Dto.PostsResponseDto;
@@ -17,10 +18,10 @@ public class IndexController {
     private final PostsService postsService;
     private final HttpSession httpSession;
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){ //@LoginUser만 사용하면 세션정보를 가져올 수 있음
         model.addAttribute("posts",postsService.findAllDesc());
 
-        SessionUser user= (SessionUser) httpSession.getAttribute("user");
+        //SessionUser user= (SessionUser) httpSession.getAttribute("user");
         //CustomOAuth2UserService에서 로그인 성공시 세션에 sessionUser를 저장하도록 구성
         if(user!=null)
         {
